@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pan de Masa Madre - Receta Artesanal Premium</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #faf8f5;
+            color: #2d2a26;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Personalización de barra de scroll elegante */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1ebd9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5a880;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a3855c;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-16">
+
+    <!-- Encabezado / Hero -->
+    <header class="relative bg-[#1e1b18] text-[#fbfbfb] py-20 px-4 overflow-hidden border-b-4 border-[#c5a880]">
+        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&q=80&w=1600');"></div>
+        <div class="relative max-w-5xl mx-auto text-center z-10">
+            <span class="inline-block uppercase tracking-widest text-[#c5a880] text-xs font-semibold px-3 py-1 border border-[#c5a880] rounded-full mb-4">Arte de la Panadería</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight tracking-wide">PAN DE MASA MADRE</h1>
+            <p class="text-lg md:text-xl text-stone-300 max-w-2xl mx-auto italic font-serif">
+                "Un pan rústico de corteza dorada y crujiente, miga aireada y esponjosa, elaborado con fermentación natural para un sabor inigualable."
+            </p>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-stone-300">
+                <span class="flex items-center gap-2 bg-[#2d2722] px-4 py-2 rounded-lg border border-stone-700">
+                    <i data-lucide="clock" class="w-4 h-4 text-[#c5a880]"></i> Tiempo Total: ~24 hrs
+                </span>
+                <span class="flex items-center gap-2 bg-[#2d2722] px-4 py-2 rounded-lg border border-stone-700">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i> Dificultad: Intermedia
+                </span>
+                <span class="flex items-center gap-2 bg-[#2d2722] px-4 py-2 rounded-lg border border-stone-700">
+                    <i data-lucide="heart" class="w-4 h-4 text-[#e07a5f]"></i> Con amor y paciencia
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-6xl mx-auto px-4 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- COLUMNA IZQUIERDA: Configuración, Ingredientes (5 Cols) -->
+        <aside class="lg:col-span-5 space-y-8">
+
+            <!-- Calculadora Dinámica de Porciones -->
+            <div class="bg-[#fcfaf5] rounded-2xl p-6 shadow-md border border-[#eddcb5]/40">
+                <h3 class="text-xl font-bold text-[#2d2a26] mb-3 flex items-center gap-2">
+                    <i data-lucide="calculator" class="text-[#c5a880]"></i> Calculadora de Masa
+                </h3>
+                <p class="text-xs text-stone-600 mb-5 leading-relaxed">
+                    Ajusta la cantidad de hogazas que deseas preparar. Las cantidades de los refrescos se recalcularán automáticamente asegurando que <strong>siempre</strong> sobren 30 g de reserva.
+                </p>
+
+                <!-- Selector de Hogazas -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-[#eddcb5]/60 mb-6">
+                    <span class="text-sm font-medium text-stone-700">Hogazas a preparar (1 kg c/u):</span>
+                    <div class="flex items-center gap-3">
+                        <button onclick="changeServings(-1)" class="w-8 h-8 rounded-lg bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-lg text-stone-700 transition-colors">-</button>
+                        <span id="servings-count" class="font-bold text-xl text-[#2d2a26] w-6 text-center">2</span>
+                        <button onclick="changeServings(1)" class="w-8 h-8 rounded-lg bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-lg text-stone-700 transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Lista de Ingredientes Dinámicos -->
+                <div class="space-y-6">
+                    <!-- Refresco 1 -->
+                    <div class="bg-white rounded-xl p-4 border border-stone-100 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-[#e07a5f] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-lg">
+                            Paso Inicial
+                        </div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-[#c5a880] mb-3 flex justify-between w-3/4">
+                            <span>1er Refresco</span>
+                            <span class="text-stone-400">± 8 horas</span>
+                        </h4>
+                        <ul class="space-y-2 text-sm text-stone-700">
+                            <li class="flex justify-between border-b border-stone-50 pb-1.5">
+                                <span>Masa madre activa</span>
+                                <span class="font-semibold text-stone-900" id="ing-mm1">15 g</span>
+                            </li>
+                            <li class="flex justify-between border-b border-stone-50 pb-1.5">
+                                <span>Agua templada</span>
+                                <span class="font-semibold text-stone-900" id="ing-agua1">30 g</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Harina de trigo de fuerza</span>
+                                <span class="font-semibold text-stone-900" id="ing-harina1">35 g</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Refresco 2 -->
+                    <div class="bg-white rounded-xl p-4 border border-stone-100 shadow-sm relative">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-[#c5a880] mb-3 flex justify-between">
+                            <span>2º Refresco</span>
+                            <span class="text-stone-400">Hasta duplicar</span>
+                        </h4>
+                        <ul class="space-y-2 text-sm text-stone-700">
+                            <li class="flex justify-between border-b border-stone-50 pb-1.5">
+                                <span>Toda la masa del 1er refresco</span>
+                                <span class="font-semibold text-stone-900" id="ing-mm2">Toda (~80 g)</span>
+                            </li>
+                            <li class="flex justify-between border-b border-stone-50 pb-1.5">
+                                <span>Agua templada</span>
+                                <span class="font-semibold text-stone-900" id="ing-agua2">120 g</span>
+                            </li>
+                            <li class="flex justify-between border-b border-stone-50 pb-1.5">
+                                <span>Harina de trigo</span>
+                                <span class="font-semibold text-stone-900" id="ing-harina2">80 g</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Harina integral de centeno</span>
+                                <span class="font-semibold text-stone-900" id="ing-centeno2">40 g</span>
+                            </li>
+                        </ul>
+                        <div class="mt-3 bg-[#fcfaf5] p-2 rounded-lg border border-[#eddcb5] text-[11px] text-[#8c6d3f] flex items-center gap-1.5">
+                            <i data-lucide="shield-alert" class="w-4 h-4 shrink-0"></i>
+                            <span>Total prefermento: <b id="total-levain-calc">330g</b>. Reservarás <b id="reserve-calc">30g</b> fijos siempre.</span>
+                        </div>
+                    </div>
+
+                    <!-- Masa Final con Porcentajes de Panadero Ajustados -->
+                    <div class="bg-[#2d2a26] text-[#faf8f5] rounded-xl p-4 border border-stone-800 shadow-sm relative overflow-hidden">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-[#c5a880]">Masa Final</h4>
+                            <span class="text-[10px] bg-stone-800 text-[#c5a880] px-2 py-0.5 rounded border border-stone-700/60 font-medium">
+                                Porcentaje Panadero (Base Harina: 100%)
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-stone-300">
+                            <li class="flex justify-between border-b border-stone-800 pb-1.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span>Harina panadera</span>
+                                    <span class="text-[11px] font-bold text-[#c5a880] bg-stone-800/80 px-1.5 py-0.2 rounded">100.0%</span>
+                                </div>
+                                <span class="font-semibold text-white" id="ing-harina-f">1000 g</span>
+                            </li>
+                            <li class="flex justify-between border-b border-stone-800 pb-1.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span>Agua templada (Hidratación)</span>
+                                    <span class="text-[11px] font-bold text-[#c5a880] bg-stone-800/80 px-1.5 py-0.2 rounded">65.0%</span>
+                                </div>
+                                <span class="font-semibold text-white" id="ing-agua-f">650 g</span>
+                            </li>
+                            <li class="flex justify-between border-b border-stone-800 pb-1.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span>Masa madre activa</span>
+                                    <span class="text-[11px] font-bold text-[#c5a880] bg-stone-800/80 px-1.5 py-0.2 rounded">30.0%</span>
+                                </div>
+                                <span class="font-semibold text-white" id="ing-mm-f">300 g</span>
+                            </li>
+                            <li class="flex justify-between border-b border-stone-800 pb-1.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span>Malta enzimática</span>
+                                    <span class="text-[11px] font-bold text-[#c5a880] bg-stone-800/80 px-1.5 py-0.2 rounded">3.0%</span>
+                                </div>
+                                <span class="font-semibold text-white" id="ing-malta-f">30 g</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <div class="flex items-center gap-1.5">
+                                    <span>Sal marina fina</span>
+                                    <span class="text-[11px] font-bold text-[#e07a5f] bg-stone-800/80 px-1.5 py-0.2 rounded">2.0%</span>
+                                </div>
+                                <span class="font-semibold text-[#e07a5f]" id="ing-sal-f">20 g</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recomendaciones Clave -->
+            <div class="bg-[#1e1b18] text-[#fbfbfb] rounded-2xl p-6 shadow-md border border-stone-800 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10">
+                    <i data-lucide="award" class="w-40 h-40"></i>
+                </div>
+                <h3 class="text-lg font-bold text-[#c5a880] mb-4 flex items-center gap-2">
+                    <i data-lucide="bookmark" class="w-5 h-5"></i> Consejos del Panadero
+                </h3>
+                <ul class="space-y-4 text-sm text-stone-300">
+                    <li class="flex gap-3">
+                        <i data-lucide="droplet" class="w-6 h-6 text-[#c5a880] shrink-0 mt-0.5"></i>
+                        <p><strong class="text-white">Usa agua sin cloro:</strong> El cloro del grifo inhibe las levaduras y bacterias salvajes de tu masa madre.</p>
+                    </li>
+                    <li class="flex gap-3">
+                        <i data-lucide="thermometer" class="w-6 h-6 text-[#c5a880] shrink-0 mt-0.5"></i>
+                        <p><strong class="text-white">Controla la temperatura:</strong> La masa madre se siente más activa entre 24-28 °C. Si hace frío, usa agua templada.</p>
+                    </li>
+                    <li class="flex gap-3">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-[#c5a880] shrink-0 mt-0.5"></i>
+                        <p><strong class="text-white">No sobreharines:</strong> Al formar la hogaza, una capa muy gruesa de harina impedirá que la masa selle correctamente.</p>
+                    </li>
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- COLUMNA DERECHA: Proceso Paso a Paso Interactivo (7 Cols) -->
+        <section class="lg:col-span-7 space-y-6">
+            
+            <!-- Barra de progreso e información interactiva -->
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-stone-100 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-xl font-bold text-[#2d2a26]">El Camino de la Masa</h3>
+                    <p class="text-xs text-stone-500">Sigue los pasos y marca tu progreso a medida que avanzas.</p>
+                </div>
+                <!-- Barra visual de Progreso -->
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <div class="w-32 bg-stone-100 h-2 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="bg-gradient-to-r from-[#c5a880] to-[#e07a5f] h-full transition-all duration-300" style="width: 14%"></div>
+                    </div>
+                    <span id="progress-text" class="text-xs font-bold text-[#2d2a26]">1 / 7 Pasos</span>
+                </div>
+            </div>
+
+            <!-- PASO A PASO -->
+            <div class="space-y-4">
+                
+                <!-- PASO 1 -->
+                <div id="step-1" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-[#c5a880] transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-[#c5a880] text-white flex items-center justify-center font-bold text-lg">1</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#2d2a26]">1er Refresco de Masa Madre</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">± 8 Horas a Temperatura Ambiente</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(1)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-3">
+                        <p>
+                            Mezcla <span class="font-semibold text-stone-900" id="step1-mm">15 g</span> de masa madre madura, <span class="font-semibold text-stone-900" id="step1-agua">30 g</span> de agua templada y <span class="font-semibold text-stone-900" id="step1-harina">35 g</span> de harina. 
+                        </p>
+                        <p class="bg-stone-50 p-3 rounded-xl border border-stone-100 italic text-stone-500 flex gap-2">
+                            <i data-lucide="info" class="w-5 h-5 text-[#c5a880] shrink-0"></i>
+                            Remueve hasta integrar completamente. Tapa sin cerrar herméticamente y deja fermentar hasta que esté muy burbujeante y aumente significativamente de volumen para formar los <span class="font-semibold text-stone-900" id="step1-total">80 g</span> iniciales de masa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div id="step-2" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-transparent transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center font-bold text-lg">2</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-stone-400">2º Refresco (Hasta Duplicar)</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Sabor, Fuerza y Reserva</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(2)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-3 hidden step-body">
+                        <p>
+                            Utiliza toda la masa madre del 1er refresco (~<span id="step2-mm">80 g</span>), mézclala vigorosamente con <span class="font-semibold text-stone-900" id="step2-agua">120 g</span> de agua templada, <span class="font-semibold text-stone-900" id="step2-harina">80 g</span> de harina de trigo y <span class="font-semibold text-stone-900" id="step2-centeno">40 g</span> de harina integral de centeno.
+                        </p>
+                        <p class="bg-amber-50/50 p-3 rounded-xl border border-[#eddcb5] text-stone-700 font-medium flex gap-2">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-[#e07a5f] shrink-0 mt-0.5"></i>
+                            <span>
+                                Al duplicar obtendrás <span class="font-semibold text-stone-900" id="step2-total">330 g</span> totales. 
+                                <b>RESERVA EXACTAMENTE <span class="font-semibold text-[#e07a5f]" id="step2-reserve">30 g</span></b> en un bote en la nevera para futuras ocasiones. Los <span class="font-semibold text-stone-900" id="step2-final">300 g</span> restantes serán para tu masa final.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PASO 3 -->
+                <div id="step-3" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-transparent transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center font-bold text-lg">3</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-stone-400">Mezcla e Integración de la Masa Final</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Desarrollo del Gluten (65% Hidratación)</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(3)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-3 hidden step-body">
+                        <p>
+                            En un bol de gran tamaño, disuelve los <span class="font-semibold text-stone-900" id="step3-mm">300 g</span> de tu masa madre activa en <span class="font-semibold text-stone-900" id="step3-agua">650 g</span> de agua templada. Añade <span class="font-semibold text-stone-900" id="step3-malta">30 g</span> de malta enzimática y <span class="font-semibold text-stone-900" id="step3-harina">1000 g</span> de harina panadera.
+                        </p>
+                        <p>
+                            Amasa con suavidad hasta integrar. Una vez que no veas harina seca, incorpora los <span class="font-semibold text-stone-900" id="step3-sal">20 g</span> de sal fina (2%). Sigue amansando hasta que la textura se vuelva lisa, elástica y un poco satinada.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PASO 4 -->
+                <div id="step-4" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-transparent transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center font-bold text-lg">4</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-stone-400">Primera Fermentación (En Bloque / Bulk)</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Aproximadamente 2 a 3 horas</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(4)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-4 hidden step-body">
+                        <p>
+                            Cubre el bol con un paño húmedo o un plástico film. Deja reposar la masa.
+                        </p>
+                        
+                        <!-- Temporizador de Pliegues Interactivo con Registro de Pliegues -->
+                        <div class="bg-[#fcfaf5] border border-[#eddcb5] rounded-xl p-4">
+                            <div class="flex flex-wrap justify-between items-center mb-3">
+                                <div>
+                                    <span class="text-xs font-bold uppercase tracking-wide text-stone-700">Cronómetro de Pliegues</span>
+                                    <!-- Registro de pliegue activo -->
+                                    <div class="text-xs text-[#e07a5f] font-semibold mt-0.5" id="fold-counter-display">
+                                        Pliegue activo: <span class="bg-[#e07a5f] text-white px-1.5 py-0.2 rounded-full font-bold">1 de 6</span>
+                                    </div>
+                                </div>
+                                <span id="timer-display" class="font-mono text-2xl font-bold text-[#e07a5f] tracking-wide">30:00</span>
+                            </div>
+                            <p class="text-xs text-stone-500 mb-4">Realiza pliegues suaves de los cuatro lados de la masa hacia el centro cada 30 minutos (realiza un total de 4 a 6 pliegues).</p>
+                            
+                            <!-- Control visual e interactivo de pliegues actuales -->
+                            <div class="flex items-center gap-2 mb-4 bg-white p-2.5 rounded-lg border border-stone-200 justify-between">
+                                <span class="text-xs font-medium text-stone-600">Marcar pliegues completados manualmente:</span>
+                                <div class="flex gap-1" id="folds-dots-container">
+                                    <button onclick="setFoldIndex(1)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-[#e07a5f] text-white border-[#e07a5f]" id="dot-1">1</button>
+                                    <button onclick="setFoldIndex(2)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-2">2</button>
+                                    <button onclick="setFoldIndex(3)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-3">3</button>
+                                    <button onclick="setFoldIndex(4)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-4">4</button>
+                                    <button onclick="setFoldIndex(5)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-5">5</button>
+                                    <button onclick="setFoldIndex(6)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-6">6</button>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-2">
+                                <button onclick="startTimer()" class="bg-[#2d2a26] hover:bg-black text-white px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                                    <i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Bloque
+                                </button>
+                                <button onclick="resetTimer()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 px-3.5 py-2 rounded-lg text-xs font-semibold">
+                                    Reiniciar Tiempo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 5 -->
+                <div id="step-5" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-transparent transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center font-bold text-lg">5</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-stone-400">Formado del Pan</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Estructura y Tensión superficial</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(5)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-3 hidden step-body">
+                        <p>
+                            Vuelca la masa con suavidad sobre una superficie ligeramente enharinada. Divide en porciones si vas a hacer más de una hogaza. Realiza un preformado boleando ligeramente cada porción y dejándola reposar 15 minutos en la mesa.
+                        </p>
+                        <p>
+                            Da la forma final (redonda u ovalada) y colócala boca abajo en un banneton enharinado (idealmente con harina de arroz para que no se pegue).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PASO 6 -->
+                <div id="step-6" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-transparent transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center font-bold text-lg">6</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-stone-400">Segunda Fermentación (Apretón Final)</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Atemperación o Frío</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(6)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-3 hidden step-body">
+                        <p class="bg-[#fcfaf5] p-3 rounded-xl border border-[#eddcb5] text-stone-700 font-medium flex gap-2">
+                            <i data-lucide="sun" class="w-5 h-5 text-[#c5a880] shrink-0 mt-0.5"></i>
+                            <span>
+                                <strong>Temperatura Ambiente:</strong> Deja fermentar entre <strong>3 y 5 horas</strong>. El tiempo exacto dependerá fuertemente de la temperatura de tu hogar (fermentará más rápido en verano y tardará más en invierno).
+                            </span>
+                        </p>
+                        <p class="bg-[#f4f7f6] p-3 rounded-xl border border-stone-200 text-stone-700 flex gap-2">
+                            <i data-lucide="snowflake" class="w-5 h-5 text-sky-500 shrink-0 mt-0.5"></i>
+                            <span>
+                                <strong>Alternativa (En Frío):</strong> Introduce la masa en el refrigerador entre 12 y 18 horas. Esto facilita enormemente hacer cortes (greñado) limpios y artísticos justo antes de hornear.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PASO 7 -->
+                <div id="step-7" class="step-card bg-white rounded-2xl p-6 shadow-md border-l-4 border-transparent transition-all">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="step-num w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center font-bold text-lg">7</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-stone-400">El Horneado Perfecto</h3>
+                                <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">¡Corteza crujiente garantizada!</p>
+                            </div>
+                        </div>
+                        <button onclick="toggleStep(7)" class="btn-check px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 text-xs font-semibold flex items-center gap-1.5 transition-all text-stone-600">
+                            <i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 pl-0 md:pl-14 text-sm text-stone-600 leading-relaxed space-y-4 hidden step-body">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-[#1e1b18] text-[#fbfbfb] p-4 rounded-xl border border-stone-800">
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-[#c5a880] mb-2 flex items-center gap-1">
+                                    <i data-lucide="flame" class="w-4 h-4 text-[#e07a5f]"></i> Fase 1: Con Vapor
+                                </h4>
+                                <ul class="space-y-1.5 text-xs text-stone-300">
+                                    <li>• Precalienta el horno a 280 °C con piedra o bandeja dentro.</li>
+                                    <li>• Vuelca el pan, realiza los cortes y entra al horno.</li>
+                                    <li>• Hornea con vapor por 20 minutos (puedes verter agua caliente en una bandeja inferior).</li>
+                                </ul>
+                            </div>
+                            <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-[#2d2a26] mb-2 flex items-center gap-1">
+                                    <i data-lucide="wind" class="w-4 h-4 text-stone-500"></i> Fase 2: Secado
+                                </h4>
+                                <ul class="space-y-1.5 text-xs text-stone-600">
+                                    <li>• Saca el vapor del horno y baja la temperatura a 220 °C.</li>
+                                    <li>• Activa solo el calor inferior y cubre la hogaza con papel aluminio si se dora demasiado rápido.</li>
+                                    <li>• Continúa horneando durante 25 minutos más.</li>
+                                    <li>• Deja enfriar por completo sobre una rejilla antes de rebanar.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Temporizador de Horneado Interactivo (Paso 7) -->
+                        <div class="bg-[#fcfaf5] border border-[#eddcb5] rounded-xl p-4 mt-2">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold uppercase tracking-wide text-stone-700">Cronómetro de Horneado</span>
+                                <span id="bake-timer-display" class="font-mono text-lg font-bold text-[#e07a5f]">20:00</span>
+                            </div>
+                            
+                            <!-- Selectores de Fase -->
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <button id="btn-phase-1" onclick="selectBakePhase(20, 'Fase 1: Con Vapor')" class="bg-[#c5a880] text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all shadow-sm">
+                                    Fase 1 (20 min)
+                                </button>
+                                <button id="btn-phase-2" onclick="selectBakePhase(25, 'Fase 2: Secado y Corteza')" class="bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 px-3 py-1 rounded-lg text-xs font-semibold transition-all">
+                                    Fase 2 (25 min)
+                                </button>
+                            </div>
+                            
+                            <p id="bake-phase-desc" class="text-xs text-stone-500 mb-4 italic">Fase activa: Fase 1: Con Vapor (Precalentado y expansión inicial).</p>
+                            
+                            <div class="flex gap-2">
+                                <button id="btn-start-bake" onclick="startBakeTimer()" class="bg-[#2d2a26] hover:bg-black text-white px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all">
+                                    <i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado
+                                </button>
+                                <button onclick="resetBakeTimer()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 px-4 py-2 rounded-lg text-xs font-semibold transition-all">
+                                    Reiniciar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Notificación integrada en pantalla para evitar alert() -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-[#2d2a26] text-white py-3.5 px-5 rounded-xl shadow-2xl flex items-center gap-3 transition-all transform translate-y-24 opacity-0 z-50 max-w-sm">
+        <i data-lucide="bell" class="text-[#c5a880] w-5 h-5 shrink-0"></i>
+        <p id="toast-message" class="text-xs font-semibold"></p>
+    </div>
+
+    <script>
+        // Inicializar iconos
+        lucide.createIcons();
+
+        // Estado Global de la App
+        const state = {
+            baseServings: 2,
+            currentServings: 2,
+            completedSteps: [1], // El primer paso se inicializa abierto y enfocado
+            currentFoldIndex: 1  // El pliegue actual (1 al 6) para el temporizador del paso 4
+        };
+
+        // Valores de ingredientes base para la masa final (Harina = 1000g)
+        const ingredientsBase = {
+            aguaF: 650,
+            mmF: 300,
+            maltaF: 30,
+            harinaF: 1000,
+            salF: 20
+        };
+
+        // Función para cambiar las porciones calculadas dinámicamente
+        function changeServings(delta) {
+            const newVal = state.currentServings + delta;
+            if (newVal < 1 || newVal > 10) return;
+            state.currentServings = newVal;
+            document.getElementById('servings-count').innerText = state.currentServings;
+            updateIngredientsUI();
+            showToast(`Fórmula recalculada para ${state.currentServings} hogaza(s)`);
+        }
+
+        // Actualizar la interfaz de ingredientes de manera matemática no-lineal
+        // para garantizar que la reserva de masa madre sea SIEMPRE de 30 gramos.
+        function updateIngredientsUI() {
+            const factor = state.currentServings / state.baseServings;
+            const reserveGoal = 30; // 30g de reserva fijos siempre, sin importar las hogazas
+
+            // 1. Masa Final (Se escala de forma lineal según el factor de porciones)
+            const harinaF = Math.round(ingredientsBase.harinaF * factor);
+            const aguaF = Math.round(ingredientsBase.aguaF * factor);
+            const mmF = Math.round(ingredientsBase.mmF * factor);
+            const maltaF = Math.round(ingredientsBase.maltaF * factor);
+            const salF = Math.round(ingredientsBase.salF * factor);
+
+            // Actualizar UI del panel "Masa Final"
+            document.getElementById('ing-harina-f').innerText = harinaF + ' g';
+            document.getElementById('ing-agua-f').innerText = aguaF + ' g';
+            document.getElementById('ing-mm-f').innerText = mmF + ' g';
+            document.getElementById('ing-malta-f').innerText = maltaF + ' g';
+            document.getElementById('ing-sal-f').innerText = salF + ' g';
+
+            // 2. Refresco 2: Necesitamos la MM para la masa final + 30 gramos de reserva fijos
+            const totalR2 = mmF + reserveGoal;
+            
+            // Proporciones originales de R2: R1 starter (25%), agua (37.5%), harina de fuerza = 25%, centeno = 12.5%
+            const mm2 = Math.round(totalR2 * 0.25);
+            const agua2 = Math.round(totalR2 * 0.375);
+            const harina2 = Math.round(totalR2 * 0.25);
+            const centeno2 = totalR2 - (mm2 + agua2 + harina2); // Ajuste de redondeo para sumar totalR2 exacto
+
+            // Actualizar UI del panel "2º Refresco"
+            document.getElementById('ing-mm2').innerText = `Toda (~${mm2} g)`;
+            document.getElementById('ing-agua2').innerText = agua2 + ' g';
+            document.getElementById('ing-harina2').innerText = harina2 + ' g';
+            document.getElementById('ing-centeno2').innerText = centeno2 + ' g';
+
+            // 3. Refresco 1: Necesitamos producir exactamente los gramos de "mm2" requeridos en el R2
+            const totalR1 = mm2;
+            
+            // Proporciones originales de R1: 15 starter, 30 agua, 35 harina (Total 80)
+            // Relaciones proporcionales: starter = 18.75%, agua = 37.5%, harina de fuerza = 43.75%
+            const mm1 = Math.max(1, Math.round(totalR1 * 0.1875)); // Al menos 1g para evitar desbordes en masas diminutas
+            const agua1 = Math.round(totalR1 * 0.375);
+            const harina1 = totalR1 - (mm1 + agua1); // Ajuste de redondeo para sumar totalR1 exacto
+
+            // Actualizar UI del panel "1er Refresco"
+            document.getElementById('ing-mm1').innerText = mm1 + ' g';
+            document.getElementById('ing-agua1').innerText = agua1 + ' g';
+            document.getElementById('ing-harina1').innerText = harina1 + ' g';
+
+            // Actualizar cuadro de notas de reservas en el panel lateral
+            document.getElementById('total-levain-calc').innerText = totalR2 + 'g';
+            document.getElementById('reserve-calc').innerText = reserveGoal + 'g';
+
+            // 4. Actualizar dinámicamente el texto de los Pasos Interactivos para consistencia completa
+            // Paso 1
+            document.getElementById('step1-mm').innerText = mm1 + ' g';
+            document.getElementById('step1-agua').innerText = agua1 + ' g';
+            document.getElementById('step1-harina').innerText = harina1 + ' g';
+            document.getElementById('step1-total').innerText = totalR1 + ' g';
+
+            // Paso 2
+            document.getElementById('step2-mm').innerText = mm2 + ' g';
+            document.getElementById('step2-agua').innerText = agua2 + ' g';
+            document.getElementById('step2-harina').innerText = harina2 + ' g';
+            document.getElementById('step2-centeno').innerText = centeno2 + ' g';
+            document.getElementById('step2-total').innerText = totalR2 + ' g';
+            document.getElementById('step2-reserve').innerText = reserveGoal + ' g';
+            document.getElementById('step2-final').innerText = mmF + ' g';
+
+            // Paso 3
+            document.getElementById('step3-mm').innerText = mmF + ' g';
+            document.getElementById('step3-agua').innerText = aguaF + ' g';
+            document.getElementById('step3-malta').innerText = maltaF + ' g';
+            document.getElementById('step3-harina').innerText = harinaF + ' g';
+            document.getElementById('step3-sal').innerText = salF + ' g';
+        }
+
+        // Manejar el progreso de los pasos interactivos
+        function toggleStep(stepNum) {
+            const card = document.getElementById(`step-${stepNum}`);
+            const btn = card.querySelector('.btn-check');
+            const stepNumCircle = card.querySelector('.step-num');
+            const stepBody = card.querySelector('.step-body');
+            
+            const isCompleted = state.completedSteps.includes(stepNum);
+            
+            if (isCompleted) {
+                // Desmarcar
+                state.completedSteps = state.completedSteps.filter(s => s !== stepNum);
+                card.classList.remove('border-[#e07a5f]', 'bg-[#faf8f5]/60');
+                card.classList.add('border-[#c5a880]');
+                stepNumCircle.className = "step-num w-10 h-10 rounded-full bg-[#c5a880] text-white flex items-center justify-center font-bold text-lg";
+                btn.innerHTML = `<i data-lucide="circle" class="w-4 h-4 text-stone-400"></i> Completar Paso`;
+            } else {
+                // Marcar como completado
+                state.completedSteps.push(stepNum);
+                card.classList.remove('border-[#c5a880]', 'border-transparent');
+                card.classList.add('border-[#e07a5f]', 'bg-[#faf8f5]/60');
+                stepNumCircle.className = "step-num w-10 h-10 rounded-full bg-[#e07a5f] text-white flex items-center justify-center font-bold text-lg";
+                btn.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-white"></i> Completado`;
+                
+                // Mostrar automáticamente el siguiente paso si existe
+                const nextStepNum = stepNum + 1;
+                const nextCard = document.getElementById(`step-${nextStepNum}`);
+                if (nextCard) {
+                    const nextBody = nextCard.querySelector('.step-body');
+                    const nextHeader = nextCard.querySelector('h3');
+                    if (nextBody) nextBody.classList.remove('hidden');
+                    if (nextHeader) nextHeader.classList.remove('text-stone-400');
+                    nextCard.classList.remove('border-transparent');
+                    nextCard.classList.add('border-[#c5a880]');
+                }
+            }
+
+            // Actualizar barra de progreso global
+            const progressPercent = Math.round((state.completedSteps.length / 7) * 100);
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            document.getElementById('progress-text').innerText = `${state.completedSteps.length} / 7 Pasos`;
+
+            // Mostrar el cuerpo del paso que ha sido clickeado si estaba colapsado
+            if (stepBody && stepBody.classList.contains('hidden')) {
+                stepBody.classList.remove('hidden');
+                card.querySelector('h3').classList.remove('text-stone-400');
+            }
+
+            lucide.createIcons();
+        }
+
+        // Asegurarse de que los cuerpos de los pasos se puedan colapsar/desplegar de forma natural
+        document.querySelectorAll('.step-card').forEach((card, index) => {
+            const stepNum = index + 1;
+            // Permitir hacer click en el encabezado para desplegar el paso
+            const headerZone = card.querySelector('h3').parentElement;
+            headerZone.style.cursor = 'pointer';
+            headerZone.addEventListener('click', () => {
+                const body = card.querySelector('.step-body');
+                const title = card.querySelector('h3');
+                if (body) {
+                    body.classList.toggle('hidden');
+                    if (!body.classList.contains('hidden')) {
+                        title.classList.remove('text-stone-400');
+                    }
+                }
+            });
+        });
+
+        // Configurar pliegue activo de forma manual
+        function setFoldIndex(index) {
+            state.currentFoldIndex = index;
+            
+            // Actualizar visual de los círculos/botones de pliegue
+            for (let i = 1; i <= 6; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i <= index) {
+                    dot.className = "w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-[#e07a5f] text-white border-[#e07a5f]";
+                } else {
+                    dot.className = "w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200";
+                }
+            }
+            
+            // Actualizar texto
+            document.getElementById('fold-counter-display').innerHTML = 
+                `Pliegue activo: <span class="bg-[#e07a5f] text-white px-1.5 py-0.2 rounded-full font-bold">${index} de 6</span>`;
+                
+            showToast(`Foco del temporizador cambiado al pliegue número ${index}`);
+        }
+
+        // Cronómetro/Temporizador de Pliegues (Paso 4)
+        let timerInterval = null;
+        let timeLeft = 30 * 60; // 30 minutos en segundos
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timeLeft = 30 * 60;
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    triggerBeep();
+                    showToast(`⏰ ¡Tiempo cumplido para el pliegue #${state.currentFoldIndex}!`);
+                    
+                    // Avanzar automáticamente al siguiente pliegue si no se ha llegado al límite
+                    if (state.currentFoldIndex < 6) {
+                        const nextFold = state.currentFoldIndex + 1;
+                        setFoldIndex(nextFold);
+                        showToast(`Preparado para iniciar el pliegue #${nextFold}. ¡Inicia el temporizador de nuevo cuando termines de plegar!`);
+                    } else {
+                        showToast("🎉 ¡Has completado los 6 pliegues de fermentación! Tu masa está lista para el formado.");
+                    }
+                }
+            }, 1000);
+            showToast(`Cronómetro de 30 minutos iniciado para el pliegue #${state.currentFoldIndex}`);
+        }
+
+        function resetTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timeLeft = 30 * 60;
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById('timer-display').innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Cronómetro de Horneado (Paso 7)
+        let bakeInterval = null;
+        let bakeTimePreset = 20; // por defecto 20 mins (Fase 1)
+        let bakeTimeLeft = 20 * 60;
+        let activePhaseName = 'Fase 1: Con Vapor';
+
+        function selectBakePhase(minutes, phaseName) {
+            if (bakeInterval) clearInterval(bakeInterval);
+            bakeTimePreset = minutes;
+            bakeTimeLeft = minutes * 60;
+            activePhaseName = phaseName;
+            
+            // Actualizar clases de los botones para reflejar selección activa
+            const btn1 = document.getElementById('btn-phase-1');
+            const btn2 = document.getElementById('btn-phase-2');
+            
+            if (minutes === 20) {
+                btn1.className = "bg-[#c5a880] text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all shadow-sm";
+                btn2.className = "bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 px-3 py-1 rounded-lg text-xs font-semibold transition-all";
+            } else {
+                btn1.className = "bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 px-3 py-1 rounded-lg text-xs font-semibold transition-all";
+                btn2.className = "bg-[#c5a880] text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all shadow-sm";
+            }
+            
+            document.getElementById('bake-phase-desc').innerText = `Fase activa: ${phaseName} (${minutes} min).`;
+            updateBakeTimerDisplay();
+            document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado`;
+            lucide.createIcons();
+        }
+
+        function startBakeTimer() {
+            if (bakeInterval) {
+                // Alternar Pausa si ya está activo
+                clearInterval(bakeInterval);
+                bakeInterval = null;
+                document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Reanudar`;
+                showToast("Temporizador de horneado pausado.");
+                lucide.createIcons();
+                return;
+            }
+            
+            document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="pause" class="w-3.5 h-3.5"></i> Pausar`;
+            lucide.createIcons();
+            showToast(`Iniciando temporizador para ${activePhaseName}`);
+            
+            bakeInterval = setInterval(() => {
+                bakeTimeLeft--;
+                updateBakeTimerDisplay();
+                if (bakeTimeLeft <= 0) {
+                    clearInterval(bakeInterval);
+                    bakeInterval = null;
+                    triggerBeep();
+                    showToast(`🔔 ¡Tiempo cumplido para la ${activePhaseName}!`);
+                    document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado`;
+                    lucide.createIcons();
+                }
+            }, 1000);
+        }
+
+        function resetBakeTimer() {
+            if (bakeInterval) clearInterval(bakeInterval);
+            bakeInterval = null;
+            bakeTimeLeft = bakeTimePreset * 60;
+            updateBakeTimerDisplay();
+            document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado`;
+            lucide.createIcons();
+        }
+
+        function updateBakeTimerDisplay() {
+            const mins = Math.floor(bakeTimeLeft / 60);
+            const secs = bakeTimeLeft % 60;
+            document.getElementById('bake-timer-display').innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Generar un beep melódico de campana de panadero
+        function triggerBeep() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // nota La5
+                gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.5);
+                osc.stop(audioCtx.currentTime + 1.5);
+            } catch (e) {
+                console.log("El navegador bloqueó el audio automático hasta que interactúes con la página.");
+            }
+        }
+
+        // Alerta personalizada y elegante sin usar el bloqueo de alert()
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 4500);
+        }
+
+        // Carga inicial
+        window.onload = function() {
+            updateIngredientsUI();
+            updateBakeTimerDisplay();
+        }
+    </script>
+</body>
+</html>
