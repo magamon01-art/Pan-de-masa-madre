@@ -341,40 +341,28 @@
                             Cubre el bol con un paño húmedo o un plástico film. Deja reposar la masa.
                         </p>
                         
-                        <!-- Temporizador de Pliegues Interactivo con Registro de Pliegues -->
+                        <!-- Registro de Pliegues -->
                         <div class="bg-[#fcfaf5] border border-[#eddcb5] rounded-xl p-4">
                             <div class="flex flex-wrap justify-between items-center mb-3">
                                 <div>
-                                    <span class="text-xs font-bold uppercase tracking-wide text-stone-700">Cronómetro de Pliegues</span>
+                                    <span class="text-xs font-bold uppercase tracking-wide text-stone-700">Registro de Pliegues</span>
                                     <!-- Registro de pliegue activo -->
                                     <div class="text-xs text-[#e07a5f] font-semibold mt-0.5" id="fold-counter-display">
-                                        Pliegue activo: <span class="bg-[#e07a5f] text-white px-1.5 py-0.2 rounded-full font-bold">1 de 6</span>
+                                        Pliegue actual: <span class="bg-[#e07a5f] text-white px-1.5 py-0.2 rounded-full font-bold">1 de 4</span>
                                     </div>
                                 </div>
-                                <span id="timer-display" class="font-mono text-2xl font-bold text-[#e07a5f] tracking-wide">30:00</span>
                             </div>
-                            <p class="text-xs text-stone-500 mb-4">Realiza pliegues suaves de los cuatro lados de la masa hacia el centro cada 30 minutos (realiza un total de 4 a 6 pliegues).</p>
+                            <p class="text-xs text-stone-500 mb-4">Realiza pliegues suaves de los cuatro lados de la masa hacia el centro cada 30 minutos (realiza un total de 4 pliegues).</p>
                             
                             <!-- Control visual e interactivo de pliegues actuales -->
-                            <div class="flex items-center gap-2 mb-4 bg-white p-2.5 rounded-lg border border-stone-200 justify-between">
-                                <span class="text-xs font-medium text-stone-600">Marcar pliegues completados manualmente:</span>
+                            <div class="flex items-center gap-2 bg-white p-2.5 rounded-lg border border-stone-200 justify-between">
+                                <span class="text-xs font-medium text-stone-600">Marcar pliegues completados:</span>
                                 <div class="flex gap-1" id="folds-dots-container">
                                     <button onclick="setFoldIndex(1)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-[#e07a5f] text-white border-[#e07a5f]" id="dot-1">1</button>
                                     <button onclick="setFoldIndex(2)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-2">2</button>
                                     <button onclick="setFoldIndex(3)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-3">3</button>
                                     <button onclick="setFoldIndex(4)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-4">4</button>
-                                    <button onclick="setFoldIndex(5)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-5">5</button>
-                                    <button onclick="setFoldIndex(6)" class="w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-stone-100 hover:bg-stone-200 text-stone-600 border-stone-200" id="dot-6">6</button>
                                 </div>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <button onclick="startTimer()" class="bg-[#2d2a26] hover:bg-black text-white px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
-                                    <i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Bloque
-                                </button>
-                                <button onclick="resetTimer()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 px-3.5 py-2 rounded-lg text-xs font-semibold">
-                                    Reiniciar Tiempo
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -476,31 +464,19 @@
                             </div>
                         </div>
 
-                        <!-- Temporizador de Horneado Interactivo (Paso 7) -->
+                        <!-- Registro de Fases de Horneado (Paso 7) -->
                         <div class="bg-[#fcfaf5] border border-[#eddcb5] rounded-xl p-4 mt-2">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-xs font-bold uppercase tracking-wide text-stone-700">Cronómetro de Horneado</span>
-                                <span id="bake-timer-display" class="font-mono text-lg font-bold text-[#e07a5f]">20:00</span>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wide text-stone-700">Control de Fases de Horneado</span>
                             </div>
                             
-                            <!-- Selectores de Fase -->
-                            <div class="flex flex-wrap gap-2 mb-3">
-                                <button id="btn-phase-1" onclick="selectBakePhase(20, 'Fase 1: Con Vapor')" class="bg-[#c5a880] text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all shadow-sm">
-                                    Fase 1 (20 min)
+                            <!-- Selectores de Fase (Checklist) -->
+                            <div class="flex flex-col gap-2">
+                                <button id="btn-phase-1" onclick="toggleBakePhase(1)" class="flex items-center justify-between bg-white border border-stone-200 hover:bg-stone-50 px-4 py-2.5 rounded-lg text-xs font-semibold transition-all text-stone-600 text-left">
+                                    <span class="flex items-center gap-2"><i data-lucide="circle" class="w-4 h-4 text-stone-400" id="icon-phase-1"></i> Completar Fase 1: Con Vapor (20 min)</span>
                                 </button>
-                                <button id="btn-phase-2" onclick="selectBakePhase(25, 'Fase 2: Secado y Corteza')" class="bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 px-3 py-1 rounded-lg text-xs font-semibold transition-all">
-                                    Fase 2 (25 min)
-                                </button>
-                            </div>
-                            
-                            <p id="bake-phase-desc" class="text-xs text-stone-500 mb-4 italic">Fase activa: Fase 1: Con Vapor (Precalentado y expansión inicial).</p>
-                            
-                            <div class="flex gap-2">
-                                <button id="btn-start-bake" onclick="startBakeTimer()" class="bg-[#2d2a26] hover:bg-black text-white px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all">
-                                    <i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado
-                                </button>
-                                <button onclick="resetBakeTimer()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 px-4 py-2 rounded-lg text-xs font-semibold transition-all">
-                                    Reiniciar
+                                <button id="btn-phase-2" onclick="toggleBakePhase(2)" class="flex items-center justify-between bg-white border border-stone-200 hover:bg-stone-50 px-4 py-2.5 rounded-lg text-xs font-semibold transition-all text-stone-600 text-left">
+                                    <span class="flex items-center gap-2"><i data-lucide="circle" class="w-4 h-4 text-stone-400" id="icon-phase-2"></i> Completar Fase 2: Secado y Corteza (25 min)</span>
                                 </button>
                             </div>
                         </div>
@@ -528,7 +504,8 @@
             baseServings: 2,
             currentServings: 2,
             completedSteps: [1], // El primer paso se inicializa abierto y enfocado
-            currentFoldIndex: 1  // El pliegue actual (1 al 6) para el temporizador del paso 4
+            currentFoldIndex: 1, // El pliegue actual (1 al 4)
+            completedBakePhases: []
         };
 
         // Valores de ingredientes base para la masa final (Harina = 1000g)
@@ -701,7 +678,7 @@
             state.currentFoldIndex = index;
             
             // Actualizar visual de los círculos/botones de pliegue
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 4; i++) {
                 const dot = document.getElementById(`dot-${i}`);
                 if (i <= index) {
                     dot.className = "w-6 h-6 rounded-full text-[11px] font-bold border transition-all bg-[#e07a5f] text-white border-[#e07a5f]";
@@ -712,145 +689,36 @@
             
             // Actualizar texto
             document.getElementById('fold-counter-display').innerHTML = 
-                `Pliegue activo: <span class="bg-[#e07a5f] text-white px-1.5 py-0.2 rounded-full font-bold">${index} de 6</span>`;
+                `Pliegue actual: <span class="bg-[#e07a5f] text-white px-1.5 py-0.2 rounded-full font-bold">${index} de 4</span>`;
                 
-            showToast(`Foco del temporizador cambiado al pliegue número ${index}`);
-        }
-
-        // Cronómetro/Temporizador de Pliegues (Paso 4)
-        let timerInterval = null;
-        let timeLeft = 30 * 60; // 30 minutos en segundos
-
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            timeLeft = 30 * 60;
-            updateTimerDisplay();
-            
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                updateTimerDisplay();
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    triggerBeep();
-                    showToast(`⏰ ¡Tiempo cumplido para el pliegue #${state.currentFoldIndex}!`);
-                    
-                    // Avanzar automáticamente al siguiente pliegue si no se ha llegado al límite
-                    if (state.currentFoldIndex < 6) {
-                        const nextFold = state.currentFoldIndex + 1;
-                        setFoldIndex(nextFold);
-                        showToast(`Preparado para iniciar el pliegue #${nextFold}. ¡Inicia el temporizador de nuevo cuando termines de plegar!`);
-                    } else {
-                        showToast("🎉 ¡Has completado los 6 pliegues de fermentación! Tu masa está lista para el formado.");
-                    }
-                }
-            }, 1000);
-            showToast(`Cronómetro de 30 minutos iniciado para el pliegue #${state.currentFoldIndex}`);
-        }
-
-        function resetTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            timeLeft = 30 * 60;
-            updateTimerDisplay();
-        }
-
-        function updateTimerDisplay() {
-            const mins = Math.floor(timeLeft / 60);
-            const secs = timeLeft % 60;
-            document.getElementById('timer-display').innerText = 
-                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        // Cronómetro de Horneado (Paso 7)
-        let bakeInterval = null;
-        let bakeTimePreset = 20; // por defecto 20 mins (Fase 1)
-        let bakeTimeLeft = 20 * 60;
-        let activePhaseName = 'Fase 1: Con Vapor';
-
-        function selectBakePhase(minutes, phaseName) {
-            if (bakeInterval) clearInterval(bakeInterval);
-            bakeTimePreset = minutes;
-            bakeTimeLeft = minutes * 60;
-            activePhaseName = phaseName;
-            
-            // Actualizar clases de los botones para reflejar selección activa
-            const btn1 = document.getElementById('btn-phase-1');
-            const btn2 = document.getElementById('btn-phase-2');
-            
-            if (minutes === 20) {
-                btn1.className = "bg-[#c5a880] text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all shadow-sm";
-                btn2.className = "bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 px-3 py-1 rounded-lg text-xs font-semibold transition-all";
+            if (index === 4) {
+                showToast(`¡Has completado los 4 pliegues de fermentación!`);
             } else {
-                btn1.className = "bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 px-3 py-1 rounded-lg text-xs font-semibold transition-all";
-                btn2.className = "bg-[#c5a880] text-white px-3 py-1 rounded-lg text-xs font-semibold transition-all shadow-sm";
+                showToast(`Pliegue #${index} marcado como completado.`);
             }
-            
-            document.getElementById('bake-phase-desc').innerText = `Fase activa: ${phaseName} (${minutes} min).`;
-            updateBakeTimerDisplay();
-            document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado`;
-            lucide.createIcons();
         }
 
-        function startBakeTimer() {
-            if (bakeInterval) {
-                // Alternar Pausa si ya está activo
-                clearInterval(bakeInterval);
-                bakeInterval = null;
-                document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Reanudar`;
-                showToast("Temporizador de horneado pausado.");
-                lucide.createIcons();
-                return;
+        // Marcar fases de horneado de forma manual
+        function toggleBakePhase(phase) {
+            const index = state.completedBakePhases.indexOf(phase);
+            const btn = document.getElementById(`btn-phase-${phase}`);
+            const icon = document.getElementById(`icon-phase-${phase}`);
+            
+            if (index > -1) {
+                // Desmarcar
+                state.completedBakePhases.splice(index, 1);
+                btn.classList.remove('border-[#c5a880]', 'bg-[#faf8f5]/60', 'text-[#c5a880]');
+                btn.classList.add('border-stone-200', 'bg-white', 'text-stone-600');
+                icon.outerHTML = `<i data-lucide="circle" class="w-4 h-4 text-stone-400" id="icon-phase-${phase}"></i>`;
+            } else {
+                // Marcar
+                state.completedBakePhases.push(phase);
+                btn.classList.remove('border-stone-200', 'bg-white', 'text-stone-600');
+                btn.classList.add('border-[#c5a880]', 'bg-[#faf8f5]/60', 'text-[#c5a880]');
+                icon.outerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-[#c5a880]" id="icon-phase-${phase}"></i>`;
+                showToast(`Fase ${phase} de horneado completada.`);
             }
-            
-            document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="pause" class="w-3.5 h-3.5"></i> Pausar`;
             lucide.createIcons();
-            showToast(`Iniciando temporizador para ${activePhaseName}`);
-            
-            bakeInterval = setInterval(() => {
-                bakeTimeLeft--;
-                updateBakeTimerDisplay();
-                if (bakeTimeLeft <= 0) {
-                    clearInterval(bakeInterval);
-                    bakeInterval = null;
-                    triggerBeep();
-                    showToast(`🔔 ¡Tiempo cumplido para la ${activePhaseName}!`);
-                    document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado`;
-                    lucide.createIcons();
-                }
-            }, 1000);
-        }
-
-        function resetBakeTimer() {
-            if (bakeInterval) clearInterval(bakeInterval);
-            bakeInterval = null;
-            bakeTimeLeft = bakeTimePreset * 60;
-            updateBakeTimerDisplay();
-            document.getElementById('btn-start-bake').innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> Iniciar Horneado`;
-            lucide.createIcons();
-        }
-
-        function updateBakeTimerDisplay() {
-            const mins = Math.floor(bakeTimeLeft / 60);
-            const secs = bakeTimeLeft % 60;
-            document.getElementById('bake-timer-display').innerText = 
-                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        // Generar un beep melódico de campana de panadero
-        function triggerBeep() {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // nota La5
-                gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
-                osc.start();
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.5);
-                osc.stop(audioCtx.currentTime + 1.5);
-            } catch (e) {
-                console.log("El navegador bloqueó el audio automático hasta que interactúes con la página.");
-            }
         }
 
         // Alerta personalizada y elegante sin usar el bloqueo de alert()
@@ -870,7 +738,6 @@
         // Carga inicial
         window.onload = function() {
             updateIngredientsUI();
-            updateBakeTimerDisplay();
         }
     </script>
 </body>
